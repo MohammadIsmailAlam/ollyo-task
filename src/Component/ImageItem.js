@@ -1,29 +1,23 @@
-import React from 'react';
+import React from "react";
 
 function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
-    const handleSelect = () => {
-      onImageSelect(image);
-    }
-  
-    const handleDragStart = (e) => {
-      // Implement logic for drag-and-drop
-    };
-  
-    const handleDragEnd = () => {
-      // Implement logic for drag-and-drop
-    };
-  
-    return (
-      <div
-        className={`image-item ${isSelected ? 'selected' : ''} ${image.isFeatured ? 'featured' : ''}`}
-        draggable
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onClick={handleSelect}
-      >
-        <img src={image.url} alt={`Image ${image.id}`} />
-      </div>
-    );
-  }
+  return (
+    <div className="relative">
+      <input
+        type="checkbox"
+        className="absolute top-2 left-2 z-10"
+        checked={isSelected}
+        onChange={() => onImageSelect(image)}
+      />
+      <img
+        src={image.url}
+        alt={`Image ${image.id}`}
+        className="w-full h-auto"
+        draggable="true"
+        onDragStart={(e) => e.preventDefault()} // Disable drag-and-drop for images
+      />
+    </div>
+  );
+}
 
 export default ImageItem;
