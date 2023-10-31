@@ -10,9 +10,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
   return (
     <div
       className={`relative border-2 border-gray-300 ${
-        isHovered
-          ? "hover:border-ash hover:text-grey-500"
-          : "" // Change border color and text color on hover
+        isHovered ? "hover:border-ash hover:text-grey-500" : "" // Change border color and text color on hover
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -27,7 +25,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
       )}
       <img
         src={image.url}
-        alt={`Image ${image.id}`}
+        alt={`img ${image.id}`}
         className="w-full h-auto"
         draggable="true"
         onDragStart={(e) => e.preventDefault()} // Disable drag-and-drop for images

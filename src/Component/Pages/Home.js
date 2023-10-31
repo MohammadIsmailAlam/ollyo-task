@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import ImageItem from "../ImageItem";
+import Header from "../Header";
+import Gallery from "../Gallery";
+import AddImage from "../AddImage";
 
 function Home() {
   const [images, setImages] = useState([
@@ -56,48 +58,18 @@ function Home() {
 
   return (
     <div>
-      <div className="border-b-2 mb-8 md:flex">
-        <nav>
-          <h1 className="my-8 ms-8 font-semibold text-3xl">
-            {selectedImages.length > 0
-              ? `${selectedImages.length} Files Selected`
-              : "Gallery"}
-          </h1>
-          {selectedImages.length > 0 && (
-            <button
-              className="md:absolute top-8 right-8 text-red-500 text-2xl ms-8"
-              onClick={handleDelete}
-            >
-              Delete File
-            </button>
-          )}
-        </nav>
-      </div>
-
-      <div className="gallery md:grid grid-rows-3 grid-flow-col gap-4 mx-8">
-        {images.map((image, index) => (
-          <ImageItem
-            key={image.id}
-            image={image}
-            isSelected={selectedImages.includes(image.id)}
-            onImageSelect={handleImageSelect}
-            onReorder={handleReorder}
-            setIsDeleteButtonVisible={setIsDeleteButtonVisible}
-          />
-        ))}
-        <label className="md:flex flex-col items-center justify-center border-4 border-dashed h-48">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleUploadImage}
-            className="hidden"
-          />
-          <span className="text-gray-600 text-2xl">
-            <i className="fas fa-image text-4xl mb-2"></i>
-            Add Img
-          </span>
-        </label>
-      </div>
+      <Header
+        selectedImages={selectedImages}
+        handleDelete={handleDelete}
+      />
+      <Gallery
+        images={images}
+        selectedImages={selectedImages}
+        handleImageSelect={handleImageSelect}
+        handleReorder={handleReorder}
+        setIsDeleteButtonVisible={setIsDeleteButtonVisible}
+      />
+      <AddImage handleUploadImage={handleUploadImage} />
     </div>
   );
 }
