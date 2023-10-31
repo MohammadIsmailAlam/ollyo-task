@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import ImageItem from "../ImageItem";
 
 function Home() {
@@ -28,6 +27,9 @@ function Home() {
     }
   };
 
+  const handleReorder = (dragIndex, hoverIndex) => {
+    // Implement logic for reordering images
+  };
 
   const handleDelete = () => {
     const updatedImages = images.filter(
@@ -72,18 +74,30 @@ function Home() {
         </nav>
       </div>
 
-      <label className="md:flex flex-col items-center justify-center border-4 border-dashed h-48">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleUploadImage}
-          className="hidden"
-        />
-        <span className="text-gray-600 text-2xl">
-          <i className="fas fa-image text-4xl mb-2"></i>
-          Add Img
-        </span>
-      </label>
+      <div className="gallery md:grid grid-rows-3 grid-flow-col gap-4 mx-8">
+        {images.map((image, index) => (
+          <ImageItem
+            key={image.id}
+            image={image}
+            isSelected={selectedImages.includes(image.id)}
+            onImageSelect={handleImageSelect}
+            onReorder={handleReorder}
+            setIsDeleteButtonVisible={setIsDeleteButtonVisible}
+          />
+        ))}
+        <label className="md:flex flex-col items-center justify-center border-4 border-dashed h-48">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleUploadImage}
+            className="hidden"
+          />
+          <span className="text-gray-600 text-2xl">
+            <i className="fas fa-image text-4xl mb-2"></i>
+            Add Img
+          </span>
+        </label>
+      </div>
     </div>
   );
 }
