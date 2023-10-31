@@ -31,9 +31,11 @@ function Home() {
   };
   return (
     <div>
-      <div>
+      <div className="border-b-2">
         <nav>
-          <h1 className="ml-2 font-semibold">Gallery</h1>
+          <h1 className="my-8 ms-8 font-semibold text-3xl">
+            Gallery
+          </h1>
         </nav>
       </div>
 
