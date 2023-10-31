@@ -40,9 +40,23 @@ function Home() {
     setIsDeleteButtonVisible(false);
   };
 
+  const handleUploadImage = (event) => {
+    const file = event.target.files[0]; // Get the first selected file
+    if (file) {
+      // Assuming you want to add the uploaded image to your images state
+      const newImage = {
+        id: images.length + 1,
+        url: URL.createObjectURL(file), // Create a URL for the uploaded image
+        isFeatured: true,
+      };
+
+      setImages([...images, newImage]);
+    }
+  };
+
   return (
     <div>
-      <div className="border-b-2">
+      <div className="border-b-2 mb-8 md:flex">
         <nav>
           <h1 className="my-8 ms-8 font-semibold text-3xl">
             {selectedImages.length > 0
@@ -51,16 +65,16 @@ function Home() {
           </h1>
           {selectedImages.length > 0 && (
             <button
-              className="absolute top-8 right-8"
+              className="md:absolute top-8 right-8 text-red-500 text-2xl ms-8"
               onClick={handleDelete}
             >
-              Delete
+              Delete File
             </button>
           )}
         </nav>
       </div>
 
-      <div className="gallery grid grid-rows-3 grid-flow-col gap-4">
+      <div className="gallery md:grid grid-rows-3 grid-flow-col gap-4 mx-8">
         {images.map((image, index) => (
           <ImageItem
             key={image.id}
@@ -71,6 +85,18 @@ function Home() {
             setIsDeleteButtonVisible={setIsDeleteButtonVisible}
           />
         ))}
+        <label className="md:flex flex-col items-center justify-center border-4 border-dashed h-48">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleUploadImage}
+            className="hidden"
+          />
+          <span className="text-gray-600 text-2xl">
+            <i className="fas fa-image text-4xl mb-2"></i>
+            Add Img
+          </span>
+        </label>
       </div>
     </div>
   );
