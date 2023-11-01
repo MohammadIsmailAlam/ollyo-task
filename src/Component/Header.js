@@ -24,10 +24,10 @@ function Header({ selectedImages, handleDelete }) {
       </h1>
       {isAnyImageSelected && (
         <button
-          className="md:absolute top-8 right-8 text-red-500 text-xl ms-8"
+          className="md:absolute top-8 right-8 text-red-500 font-semibold text-xl ms-8 hover:underline"
           onClick={handleDelete}
         >
-          Delete File
+          Delete files
         </button>
       )}
     </nav>
