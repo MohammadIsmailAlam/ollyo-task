@@ -23,7 +23,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
 
   return (
     <div
-      className={`relative border-2 border-gray-300 group md:flex items-center justify-center overflow-hidden ${
+      className={`relative border-2 rounded-xl border-gray-300 group md:flex items-center justify-center overflow-hidden ${
         index === 0 ? "h-[25rem]" : "h-48"
       }`}
       onMouseEnter={() => setIsHovered(true)}
