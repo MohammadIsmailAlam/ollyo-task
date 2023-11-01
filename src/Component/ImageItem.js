@@ -33,7 +33,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
     >
       {(isHovered || isSelected) && (
         <div
-          className={`absolute inset-0 ${
+          className={`md:absolute inset-0 ${
             isSelected ? "selected-overlay" : isHovered ? "hovered-overlay" : ""
           }`}
         />
