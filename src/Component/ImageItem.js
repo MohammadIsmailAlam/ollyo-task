@@ -7,11 +7,29 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
     onImageSelect(image);
   };
 
+  const handleDragStart = (e) => {
+    e.dataTransfer.setData("text/plain", image.id);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const draggedImageId = e.dataTransfer.getData("text/plain");
+    onReorder(draggedImageId, image.id);
+  };
+
   return (
     <div
       className={`relative border-2 border-gray-300 group md:flex items-center justify-center`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      draggable="true"
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
     >
       <div className="img">
         <input
@@ -24,9 +42,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
       <img
         src={image.url}
         alt={`img ${image.id}`}
-        className="object-cover	w-full	h-full"
-        draggable="true"
-        onDragStart={(e) => e.preventDefault()} // Disable drag-and-drop for images
+        className="object-cover w-full h-full"
       />
     </div>
   );

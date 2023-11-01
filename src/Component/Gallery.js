@@ -22,6 +22,23 @@ function Gallery({
     }
   };
 
+  const handleImageReorder = (draggedImageId, targetImageId) => {
+    const updatedImages = [...images];
+    const draggedIndex = updatedImages.findIndex(
+      (image) => image.id === +draggedImageId
+    );
+    const targetIndex = updatedImages.findIndex(
+      (image) => image.id === +targetImageId
+    );
+
+    if (draggedIndex !== -1 && targetIndex !== -1) {
+      const [draggedImage] = updatedImages.splice(draggedIndex, 1);
+      updatedImages.splice(targetIndex, 0, draggedImage);
+
+      setImages(updatedImages);
+    }
+  };
+
   return (
     <div className="md:grid grid-cols-5 gap-4 md:mx-8">
       {images.map((image, index) => (
@@ -35,7 +52,7 @@ function Gallery({
             image={image}
             isSelected={selectedImages.includes(image.id)}
             onImageSelect={handleImageSelect}
-            onReorder={handleReorder}
+            onReorder={handleImageReorder}
             setIsDeleteButtonVisible={setIsDeleteButtonVisible}
           />
         </div>
