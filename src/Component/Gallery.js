@@ -1,6 +1,7 @@
 import React from "react";
 import ImageItem from "./ImageItem";
 import AddImage from "./AddImage";
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 function Gallery({
   images,
@@ -39,8 +40,11 @@ function Gallery({
     }
   };
 
+  
+  const [parent, enableAnimations] = useAutoAnimate()
+
   return (
-    <div className="md:grid grid-cols-5 gap-4 md:mx-8">
+    <div className="md:grid grid-cols-5 gap-4 md:mx-8" ref={parent}>
       {images.map((image, index) => (
         <div
           key={image.id}
