@@ -43,7 +43,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
       {(isHovered || isSelected) && (
         <input
           type="checkbox"
-          className="md:absolute top-2 left-2 z-10 mt-8 ml-5 sm:w-5 sm:h-5"
+          className="md:absolute top-2 left-2 mt-2 ml-5 sm:w-5 sm:h-5"
           checked={isSelected}
           onChange={handleCheckboxChange}
         />

@@ -1,6 +1,5 @@
 import React from "react";
-import { ImImage } from 'react-icons/im';
-
+import { ImImage } from "react-icons/im";
 
 function AddImage({ handleUploadImage }) {
   return (
@@ -11,9 +10,10 @@ function AddImage({ handleUploadImage }) {
         onChange={handleUploadImage}
         className="hidden"
       />
-      <span className="md:flex text-2xl">
-      <ImImage /> Add Images
-      </span>
+      <div className="md:flex flex-col items-center">
+        <ImImage className="text-4xl" />
+        <span className="text-xl mt-2">Add Images</span>
+      </div>
     </label>
   );
 }
