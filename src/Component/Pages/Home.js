@@ -4,17 +4,17 @@ import Gallery from "../Gallery";
 
 function Home() {
   const [images, setImages] = useState([
-    { id: 1, url: "img/image-1.webp", isFeatured: true },
-    { id: 2, url: "img/image-2.webp", isFeatured: true },
-    { id: 3, url: "img/image-3.webp", isFeatured: true },
-    { id: 4, url: "img/image-4.webp", isFeatured: true },
-    { id: 5, url: "img/image-5.webp", isFeatured: true },
-    { id: 6, url: "img/image-6.webp", isFeatured: true },
-    { id: 7, url: "img/image-7.webp", isFeatured: true },
-    { id: 8, url: "img/image-8.webp", isFeatured: true },
-    { id: 9, url: "img/image-9.webp", isFeatured: true },
-    { id: 10, url: "img/image-10.jpeg", isFeatured: true },
-    { id: 11, url: "img/image-11.jpeg", isFeatured: true },
+    { id: 1, url: "img/image-1.webp"},
+    { id: 2, url: "img/image-2.webp"},
+    { id: 3, url: "img/image-3.webp"},
+    { id: 4, url: "img/image-4.webp"},
+    { id: 5, url: "img/image-5.webp"},
+    { id: 6, url: "img/image-6.webp"},
+    { id: 7, url: "img/image-7.webp"},
+    { id: 8, url: "img/image-8.webp"},
+    { id: 9, url: "img/image-9.webp"},
+    { id: 10, url: "img/image-10.jpeg"},
+    { id: 11, url: "img/image-11.jpeg"}
   ]);
 
   const [selectedImages, setSelectedImages] = useState([]);
@@ -27,11 +27,6 @@ function Home() {
     } else {
       setSelectedImages([...selectedImages, image.id]);
     }
-  };
-
-  // Function to handle image reordering (you can implement this logic)
-  const handleReorder = (dragIndex, hoverIndex) => {
-    // Implement logic for reordering images
   };
 
   // Function to handle image deletion
@@ -51,7 +46,6 @@ function Home() {
         images={images}
         selectedImages={selectedImages}
         handleImageSelect={handleImageSelect}
-        handleReorder={handleReorder}
         setIsDeleteButtonVisible={setIsDeleteButtonVisible}
         setImages={setImages}
       />
