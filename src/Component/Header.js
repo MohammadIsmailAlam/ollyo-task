@@ -1,9 +1,8 @@
-// Header.js
 import React from "react";
 
 function Header({ selectedImages, handleDelete }) {
-    return (
-    <nav>
+  return (
+    <nav className="border-b-2 mb-8">
       <h1 className="my-8 ms-8 font-semibold text-3xl">
         {selectedImages.length > 0
           ? `${selectedImages.length} Files Selected`
