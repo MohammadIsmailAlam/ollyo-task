@@ -1,14 +1,28 @@
 import React from "react";
 
 function Header({ selectedImages, handleDelete }) {
+  const isAnyImageSelected = selectedImages.length > 0;
+
+  const labelStyle = "flex items-center";
+
   return (
     <nav className="border-b-2 mb-8">
-      <h1 className="my-8 ms-8 font-semibold text-3xl">
-        {selectedImages.length > 0
-          ? `${selectedImages.length} Files Selected`
-          : "Gallery"}
+      <h1 className="my-8 ms-8 font-semibold text-2xl">
+        {isAnyImageSelected ? (
+          <label className={labelStyle}>
+            <input
+              type="checkbox"
+              checked={isAnyImageSelected}
+              readOnly
+              className="w-5 h-4 mr-2" // You can adjust the 'w-5' and 'h-5' for the size you desire
+            />
+            {selectedImages.length} Files Selected
+          </label>
+        ) : (
+          "Gallery"
+        )}
       </h1>
-      {selectedImages.length > 0 && (
+      {isAnyImageSelected && (
         <button
           className="md:absolute top-8 right-8 text-red-500 text-2xl ms-8"
           onClick={handleDelete}
