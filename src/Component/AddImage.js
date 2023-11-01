@@ -1,4 +1,3 @@
-// AddImage.js
 import React from "react";
 
 function AddImage({ handleUploadImage }) {

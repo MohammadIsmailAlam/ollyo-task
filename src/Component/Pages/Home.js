@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Header";
 import Gallery from "../Gallery";
-import AddImage from "../AddImage";
 
 function Home() {
   const [images, setImages] = useState([
@@ -42,20 +41,6 @@ function Home() {
     setIsDeleteButtonVisible(false);
   };
 
-  const handleUploadImage = (event) => {
-    const file = event.target.files[0]; // Get the first selected file
-    if (file) {
-      // Assuming you want to add the uploaded image to your images state
-      const newImage = {
-        id: images.length + 1,
-        url: URL.createObjectURL(file), // Create a URL for the uploaded image
-        isFeatured: true,
-      };
-
-      setImages([...images, newImage]);
-    }
-  };
-
   return (
     <div>
       <Header
@@ -68,8 +53,8 @@ function Home() {
         handleImageSelect={handleImageSelect}
         handleReorder={handleReorder}
         setIsDeleteButtonVisible={setIsDeleteButtonVisible}
+        setImages={setImages}
       />
-      <AddImage handleUploadImage={handleUploadImage} />
     </div>
   );
 }
