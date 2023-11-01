@@ -9,24 +9,22 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
 
   return (
     <div
-      className={`relative border-2 border-gray-300 ${
-        isHovered ? "hover:border-ash hover:text-grey-500" : "" // Change border color and text color on hover
-      }`}
+      className={`relative border-2 border-gray-300 group md:flex items-center justify-center`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {isHovered && (
+      <div className="img">
         <input
           type="checkbox"
           className="md:absolute top-2 left-2 z-10 mt-12 ml-10 sm:w-5 sm:h-5"
           checked={isSelected}
           onChange={handleCheckboxChange}
         />
-      )}
+      </div>
       <img
         src={image.url}
         alt={`img ${image.id}`}
-        className="w-full h-auto"
+        className="object-cover	w-full	h-full"
         draggable="true"
         onDragStart={(e) => e.preventDefault()} // Disable drag-and-drop for images
       />
