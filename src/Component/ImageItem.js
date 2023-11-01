@@ -42,7 +42,9 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
       <img
         src={image.url}
         alt={`img ${image.id}`}
-        className="object-cover w-full h-full"
+        className={`object-cover w-full h-full ${
+          isSelected ? "filter brightness-75" : ""
+        }`}
       />
     </div>
   );
