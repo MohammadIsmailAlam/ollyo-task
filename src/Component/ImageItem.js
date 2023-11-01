@@ -23,9 +23,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
 
   return (
     <div
-      className={`relative border-2 border-gray-300 group md:flex items-center justify-center ${
-        isSelected ? "border-blue-500" : isHovered ? "border-green-500" : ""
-      }`}
+      className={`relative border-2 border-gray-300 group md:flex items-center justify-center`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       draggable="true"
@@ -33,6 +31,13 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
+      {(isHovered || isSelected) && (
+        <div
+          className={`absolute inset-0 ${
+            isSelected ? "selected-overlay" : isHovered ? "hovered-overlay" : ""
+          }`}
+        />
+      )}
       {(isHovered || isSelected) && (
         <input
           type="checkbox"
@@ -44,9 +49,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
       <img
         src={image.url}
         alt={`img ${image.id}`}
-        className={`object-cover w-full h-full ${
-          isSelected ? "filter brightness-75" : ""
-        }`}
+        className="object-cover w-full h-full"
       />
     </div>
   );
