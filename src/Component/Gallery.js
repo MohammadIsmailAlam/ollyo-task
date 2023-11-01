@@ -20,20 +20,25 @@ function Gallery({
       };
       setImages([...images, newImage]);
     }
-  }
+  };
 
   return (
-    <div className="gallery md:grid grid-cols-4 gap-4 mx-8">
+    <div className="grid grid-cols-4 gap-4 md:mx-8">
       {images.map((image, index) => (
-        <ImageItem
+        <div
           key={image.id}
-          image={image}
-          isSelected={selectedImages.includes(image.id)}
-          onImageSelect={handleImageSelect}
-          onReorder={handleReorder}
-          setIsDeleteButtonVisible={setIsDeleteButtonVisible}
-          className={index === 0 ? "row-span-2 col-span-1" : "col-span-1"}
-        />
+          className={`${
+            index === 0 ? "md:col-span-2 md:row-span-2" : "md:col-span-1"
+          }`}
+        >
+          <ImageItem
+            image={image}
+            isSelected={selectedImages.includes(image.id)}
+            onImageSelect={handleImageSelect}
+            onReorder={handleReorder}
+            setIsDeleteButtonVisible={setIsDeleteButtonVisible}
+          />
+        </div>
       ))}
 
       <AddImage handleUploadImage={handleUploadImage} />

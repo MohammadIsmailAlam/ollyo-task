@@ -18,8 +18,9 @@ function Home() {
   ]);
 
   const [selectedImages, setSelectedImages] = useState([]);
-  const [setIsDeleteButtonVisible] = useState(false);
+  const [isDeleteButtonVisible, setIsDeleteButtonVisible] = useState(false);
 
+  // Function to handle image selection
   const handleImageSelect = (image) => {
     if (selectedImages.includes(image.id)) {
       setSelectedImages(selectedImages.filter((id) => id !== image.id));
@@ -28,10 +29,12 @@ function Home() {
     }
   };
 
+  // Function to handle image reordering (you can implement this logic)
   const handleReorder = (dragIndex, hoverIndex) => {
     // Implement logic for reordering images
   };
 
+  // Function to handle image deletion
   const handleDelete = () => {
     const updatedImages = images.filter(
       (image) => !selectedImages.includes(image.id)
@@ -43,10 +46,7 @@ function Home() {
 
   return (
     <div>
-      <Header
-        selectedImages={selectedImages}
-        handleDelete={handleDelete}
-      />
+      <Header selectedImages={selectedImages} handleDelete={handleDelete} />
       <Gallery
         images={images}
         selectedImages={selectedImages}
