@@ -23,7 +23,7 @@ function Gallery({
   };
 
   return (
-    <div className="grid grid-cols-5 gap-4 md:mx-8">
+    <div className="md:grid grid-cols-5 gap-4 md:mx-8">
       {images.map((image, index) => (
         <div
           key={image.id}
