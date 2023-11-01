@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
+function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -23,7 +23,9 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder }) {
 
   return (
     <div
-      className={`relative border-2 border-gray-300 group md:flex items-center justify-center`}
+      className={`relative border-2 border-gray-300 group md:flex items-center justify-center overflow-hidden ${
+        index === 0 ? "h-[25rem]" : "h-48"
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       draggable="true"

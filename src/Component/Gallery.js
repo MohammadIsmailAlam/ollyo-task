@@ -54,10 +54,10 @@ function Gallery({
             onImageSelect={handleImageSelect}
             onReorder={handleImageReorder}
             setIsDeleteButtonVisible={setIsDeleteButtonVisible}
+            index={index}
           />
         </div>
       ))}
-
       <AddImage handleUploadImage={handleUploadImage} />
     </div>
   );
