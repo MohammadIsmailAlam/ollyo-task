@@ -55,7 +55,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
       <img
         src={image.url}
         alt={`img ${image.id}`}
-        className="object-cover w-full h-full"
+        className="object-cover-fit w-full h-full"
       />
     </div>
   );
