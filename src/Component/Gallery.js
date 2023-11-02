@@ -7,7 +7,6 @@ function Gallery({
   images,
   selectedImages,
   handleImageSelect,
-  handleReorder,
   setIsDeleteButtonVisible,
   setImages,
 }) {
