@@ -3,18 +3,22 @@ import React, { useState } from "react";
 function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Function to handle checkbox
   const handleCheckboxChange = () => {
     onImageSelect(image);
   };
 
+  // Function to handle image dragStart
   const handleDragStart = (e) => {
     e.dataTransfer.setData("text/plain", image.id);
   };
 
+  // Function to handle image dragOver
   const handleDragOver = (e) => {
     e.preventDefault();
   };
 
+  // Function to handle image drop
   const handleDrop = (e) => {
     e.preventDefault();
     const draggedImageId = e.dataTransfer.getData("text/plain");

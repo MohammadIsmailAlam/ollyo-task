@@ -10,6 +10,7 @@ function Gallery({
   setIsDeleteButtonVisible,
   setImages,
 }) {
+  // Function to handle image upload
   const handleUploadImage = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -22,6 +23,7 @@ function Gallery({
     }
   };
 
+  // Function to handle image reorderd
   const handleImageReorder = (draggedImageId, targetImageId) => {
     const updatedImages = [...images];
     const draggedIndex = updatedImages.findIndex(
@@ -39,7 +41,7 @@ function Gallery({
     }
   };
 
-  
+  //auto animated hook
   const [parent, enableAnimations] = useAutoAnimate()
 
   return (
