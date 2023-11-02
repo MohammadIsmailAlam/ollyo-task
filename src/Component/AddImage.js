@@ -3,7 +3,7 @@ import { ImImage } from "react-icons/im";
 
 function AddImage({ handleUploadImage }) {
   return (
-    <label className="md:flex flex-col items-center justify-center border-4 h-48">
+    <label className="md:flex flex-col items-center justify-center border-4 h-48 cursor-pointer">
       <input
         type="file"
         accept="image/*"
