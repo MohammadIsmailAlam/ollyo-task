@@ -40,7 +40,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto">
       <Header selectedImages={selectedImages} handleDelete={handleDelete} />
       <Gallery
         images={images}
