@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   // Function to handle checkbox
   const handleCheckboxChange = () => {
@@ -11,6 +12,12 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
   // Function to handle image dragStart
   const handleDragStart = (e) => {
     e.dataTransfer.setData("text/plain", image.id);
+    setDragging(true);
+  };
+
+  // Function to handle image dragEnd
+  const handleDragEnd = () => {
+    setDragging(false);
   };
 
   // Function to handle image dragOver
@@ -23,6 +30,7 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
     e.preventDefault();
     const draggedImageId = e.dataTransfer.getData("text/plain");
     onReorder(draggedImageId, image.id);
+    setDragging(false);
   };
 
   return (
@@ -34,17 +42,18 @@ function ImageItem({ image, isSelected, onImageSelect, onReorder, index }) {
       onMouseLeave={() => setIsHovered(false)}
       draggable="true"
       onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      {(isHovered || isSelected) && (
+      {(isHovered || isSelected) && !dragging && (
         <div
           className={`md:absolute inset-0 ${
             isSelected ? "selected-overlay" : isHovered ? "hovered-overlay" : ""
           }`}
         />
       )}
-      {(isHovered || isSelected) && (
+      {(isHovered || isSelected) && !dragging && (
         <input
           type="checkbox"
           className="md:absolute top-2 left-2 mt-2 ml-5 sm:w-5 sm:h-5 cursor-pointer"
